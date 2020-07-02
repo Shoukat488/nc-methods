@@ -14,7 +14,7 @@ def midpoint(x0, y0, x, h):
         y = y +  h * dydx(x, y1)
         x0 = x0 + h
         print("iteration ",i+1)
-        print("x(",i+0.5,") = ",x,", x(",i+1,") = ",x0,", y(",i+0.5,")= ",y1,", y(",i+1,")= ",y)
+        print("x(",i+0.5,") = ",x,", x(",i+1,") = ",x0,", y(",i+0.5,")= ",round(y1,6),", y(",i+1,")= ",round(y,6))
         print(" ")
 
 #Enter arguments

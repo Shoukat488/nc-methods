@@ -29,12 +29,12 @@ def rungeKutta(x0, y0, z0,  x, h):
         
         x0 = x0 + h 
         print("iteration ",i)
-        print(" k1= ",k1," k2= ",k2," k3= ",k3," k4= ",k4)
-        print(" l1= ",l1," l2= ",l2," l3= ",l3," l4= ",l4)
-        print(" x0= ",x0, " y= ",y, " z= ",z)
+        print(" k1= ",round(k1,6)," k2= ",round(k2,6)," k3= ",round(k3,6)," k4= ",round(k4,6))
+        print(" l1= ",round(l1,6)," l2= ",round(l2,6)," l3= ",round(l3,6)," l4= ",round(l4,6))
+        print(" x0= ",round(x0,6), " y= ",round(y,6), " z= ",round(z,6))
         print(" ")
     
-    print("Final value of y = ",y, " z= ",z )
+    print("Final value of y = ",round(y,6), " z= ",round(z,6) )
 
 #Enter arguments
 x0 = 0

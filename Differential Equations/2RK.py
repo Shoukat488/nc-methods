@@ -15,12 +15,12 @@ def rungeKutta(x0, y0, x, h):
         k2 = h * dydx(x0 + h, y +  h * k1)
         y = y + 0.5 * (k1 + k2)
         x0 = x0 + h
-        print(i,"\t\t   ",k1,"\t\t   ",k2,"\t\t   ",x0,"\t\t   ",y)
+        print(i,"\t\t   ",round(k1,6),"\t\t   ",round(k2,6),"\t\t   ",round(x0,6),"\t\t   ",round(y,6))
     return y;
 
 if __name__ == "__main__": 
     x0 = 0; y = 1;
     x = 1; h = 0.25; 
-    print("y(x) =",rungeKutta(x0, y, x, h)); 
+    print("y(x) =",round(rungeKutta(x0, y, x, h),6)); 
 
 # This code is contributed by Yash_R 
