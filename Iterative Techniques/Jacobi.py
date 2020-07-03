@@ -1,5 +1,5 @@
 from pprint import pprint
-from numpy import array, zeros, diag, diagflat, dot, array_equal, round , copy
+from numpy import array, zeros, diag, diagflat, dot, array_equal, round, copy
 import services as Services
 
 
@@ -38,7 +38,7 @@ conditon = Services.CheckCondition(A)
 if conditon == False:
     arranged = Services.Arrange(arranged)
 
-    if Services.isEqual(A,arranged):
+    if Services.isEqual(A, arranged):
         print("It isn't a diagnolly dominent, Therefore solution will be diverged")
         print("")
     else:

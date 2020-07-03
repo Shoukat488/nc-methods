@@ -32,13 +32,18 @@ b = [8, -4, 12]
 
 print("Equations given =>")
 Services.PrintArray(A)
-arranged = A
 print("Checking Condition =>")
 print("")
-conditon = Services.CheckCondition(arranged)
-if conditon != True:
-    arranged = Services.Arrange(A)
-    if array_equal(arranged, A) == False:
+arranged = copy(A)
+
+conditon = Services.CheckCondition(A)
+if conditon == False:
+    arranged = Services.Arrange(arranged)
+
+    if Services.isEqual(A, arranged):
+        print("It isn't a diagnolly dominent, Therefore solution will be diverged")
+        print("")
+    else:
         print("Rearranging equaitions =>")
         Services.PrintArray(arranged)
         print("Checking Condition Again =>")
@@ -49,10 +54,7 @@ if conditon != True:
             print("")
         else:
             print("It isn't a diagnolly dominent, Therefore solution will be diverged")
-            print("")
-    else:
-        print("It isn't a diagnolly dominent, Therefore solution will be diverged")
-        print("")
+            print("k")
 else:
     print("It's a diagnolly dominent, Therefore solution will be converged")
     print("")
