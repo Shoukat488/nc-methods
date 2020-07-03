@@ -1,5 +1,5 @@
 from pprint import pprint
-from numpy import array, zeros, diag, diagflat, dot, array_equal, round
+from numpy import array, zeros, diag, diagflat, dot, array_equal, round , copy
 import services as Services
 
 
@@ -30,19 +30,17 @@ b = array([24.0, 2.0, 16.0])
 
 print("Equations given =>")
 Services.PrintArray(A)
-arranged = A
 print("Checking Condition =>")
 print("")
-conditon = Services.CheckCondition(arranged)
+arranged = copy(A)
+
+conditon = Services.CheckCondition(A)
 if conditon == False:
-    arranged = Services.Arrange(A)
-    Services.PrintArray(arranged)
-    # print(array_equal(arranged, A))
-    print(arranged == A)
-    
-    if arranged == A:
+    arranged = Services.Arrange(arranged)
+
+    if Services.isEqual(A,arranged):
         print("It isn't a diagnolly dominent, Therefore solution will be diverged")
-        print("k")
+        print("")
     else:
         print("Rearranging equaitions =>")
         Services.PrintArray(arranged)
@@ -57,7 +55,7 @@ if conditon == False:
             print("k")
 else:
     print("It's a diagnolly dominent, Therefore solution will be converged")
-    print("k")
+    print("")
 # N is no of iterations
 
 sol = jacobi(arranged, b, N=2)
