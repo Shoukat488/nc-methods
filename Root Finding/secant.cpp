@@ -21,44 +21,46 @@ using namespace std;
 
 double f(double x) {
    return 
-   /* f(x): */ (pow(x,3) * 2) - 11.7 * pow(x, 2) + 17.7*x - 5
+   /* f(x): */ pow(x, 7) - 1000
    ;
 }
 
-// derivative
-double g(double x) {
-   return 
-   /* f'(x): */ 6*pow(x, 2)-23.4*x + 17.7
-   ;
-}
 
 int main() {
 
    int it = 
-   /* iterations: */ 10
+   /* iterations: */ 20
    ;
-   double ea, a, x= 
-   /* initial: */ 3
+   double a, ea, x0 = 
+   /* x0: */ 2
    ;
-   double t = findRoot(f, x + 100, x - 100);
+   double x1 = 
+   /* x1: */ 3
+   ;
+   double t = findRoot(f, x0, x1);
 
    cout << fixed << showpoint << setprecision(6);
    cout << "true value: " << t << endl;
-   cout << "\ni\tXi\t\tf(Xi)\t\tf'(Xi)\t\tXi+1\t\tEa(%)\t\tEt(%)" << endl;
-
+   if (f(x0) * f(x1) > 0) {
+      cout << "Invalid inputs" << endl;
+      return 0;
+   }
+   cout << "\ni\tXi-1\t\tXi\t\tf(Xi)\t\tXi+1\t\tEa(%)\t\tEt(%)" << endl;
+   
    for (int i = 0; i < it; ++i) {
-      ea = x;
-      a = x - (f(x) / g(x));
+      ea = a;
+      a = x1 - (f(x1) / ((f(x1) - f(x0)) / (x1 - x0)));
       ea = ((a - ea) / a);
-      cout  << i + 1 << "\t"
-            << x << "\t"
-            << f(x) << "\t"
-            << g(x) << "\t"
+      cout  << i + 2 << "\t"
+            << x0 << "\t"
+            << x1 << "\t"
+            << f(x1) << "\t"
             << a << "\t"
             << abs(i ? ea * 100 : 0) << "\t"
             << abs((t - a) / t) * 100
             << endl;
-      x = a;
+      x0 = x1;
+      x1 = a;
    }
 
    return 0;

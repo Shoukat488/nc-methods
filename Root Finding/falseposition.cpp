@@ -37,9 +37,15 @@ int main() {
    /* b: */ 1.3
    ;
    double t = findRoot(f, 0, 1.3);
-   
+
    cout << fixed << showpoint << setprecision(6);
+   cout << "true value: " << t << endl;
+   if (f(a) * f(b) > 0) {
+      cout << "Invalid inputs" << endl;
+      return 0;
+   }
    cout << "\ni\ta\t\tb\t\tx\t\tf(a)\t\tf(b)\t\tf(x)\t\tEa(%)\t\tEt(%)" << endl;
+
    for (int i = 0; i < it; ++i) {
       ea = x;
       x = (a * f(b) - b * f(a)) / (f(b) - f(a));
@@ -51,8 +57,8 @@ int main() {
             << f(a) << "\t"
             << f(b) << "\t"
             << f(x) << "\t"
-            << (i ? ea * 100 : 0) << "\t"
-            << ((t - x) / t) * 100
+            << abs(i ? ea * 100 : 0) << "\t"
+            << abs((t - x) / t) * 100
             << endl;
 
       if (f(x) > 0 && f(a) > 0) a = x;
