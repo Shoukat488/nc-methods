@@ -15,6 +15,7 @@ Newton divided, forward, backward, and centered difference
 #include <math.h>
 #include <iostream>
 #include <iomanip>
+#include "true.h"
 
 using namespace std;
 
@@ -35,9 +36,8 @@ int main() {
    double b = 
    /* b: */ 1.3
    ;
-   double t = 
-   /* true value: */ 1
-   ;
+   double t = findRoot(f, 0, 1.3);
+   
    cout << fixed << showpoint << setprecision(6);
    cout << "\ni\ta\t\tb\t\tx\t\tf(a)\t\tf(b)\t\tf(x)\t\tEa(%)\t\tEt(%)" << endl;
    for (int i = 0; i < it; ++i) {
