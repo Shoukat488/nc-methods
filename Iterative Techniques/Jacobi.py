@@ -25,8 +25,8 @@ def jacobi(A, b, N=25, x=None):
     return x
 
 
-A = [[2, -6, 8], [5, 4, -3], [3, 1, 2]]
-b = array([24.0, 2.0, 16.0])
+A = [[1, 2, 1], [3, 1, 1], [1, -1, 4]]
+b = array([0, 0, 3])
 
 print("Equations given =>")
 Services.PrintArray(A)

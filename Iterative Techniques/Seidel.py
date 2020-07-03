@@ -1,6 +1,6 @@
 # Defining our function as seidel which takes 3 arguments
 # as A matrix, Solution and B matrix
-from numpy import array_equal, round
+from numpy import array_equal, round , copy
 import services as Services
 
 
