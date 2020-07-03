@@ -1,5 +1,6 @@
 from pprint import pprint
-from numpy import array, zeros, diag, diagflat, dot
+from numpy import array, zeros, diag, diagflat, dot, array_equal, round
+import services as Services
 import os;
 os.system('cls')
 def jacobi(A,b,N=25,x=None):
@@ -18,11 +19,31 @@ def jacobi(A,b,N=25,x=None):
         x = (b - dot(R,x)) / D
         print("Iteratin: ",i+1)
         print("x :")
-        print(x)
+        print(round(x,6))
     return x
 
-A = array([[3,-1,1],[3,6,2],[3,3,7]])
-b = array([1.0, 0.0, 4.0])
+A = [[2,-6,8],[5,4,-3],[3,1,2]]
+b = array([24.0, 2.0, 16.0])
 
+print("Equations given =>")
+Services.PrintArray(A)
+arranged = Services.Arrange(A)
+
+if array_equal(array_equal, A) == False:
+    print("Equations after arrangment =>")
+    Services.PrintArray(arranged)
+else:
+    print("Equations are already arranged")
+    print("")
+    
+print("Checking Condition =>")
+print("")
+conditon =  Services.CheckCondition(arranged)
+if conditon == True:
+    print("Condition is statisfied, Therefore solution will be converged")
+    print("")
+else:
+    print("Condition is not statisfied, Therefore solution will be diverged")
+    print("")
 # N is no of iterations
-sol = jacobi(A,b,N=2)
+sol = jacobi(arranged,b,N=2)
