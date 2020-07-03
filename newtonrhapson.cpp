@@ -20,7 +20,14 @@ using namespace std;
 
 double f(double x) {
    return 
-   /* f(x): */ pow(x, 10) - 1
+   /* f(x): */ (pow(x,3) * 2) - 11.7 * pow(x, 2) + 17.7*x - 5
+   ;
+}
+
+// derivative
+double g(double x) {
+   return 
+   /* f'(x): */ 6*pow(x, 2)-23.4*x + 17.7
    ;
 }
 
@@ -29,37 +36,28 @@ int main() {
    int it = 
    /* iterations: */ 10
    ;
-   double x, ea, a = 
-   /* a: */ 0
-   ;
-   double b = 
-   /* b: */ 1.3
+   double ea, a, x= 
+   /* initial: */ 3
    ;
    double t = 
-   /* true value: */ 1
+   /* true value: */ 3.563
    ;
    cout << fixed << showpoint << setprecision(6);
-   cout << "\ni\ta\t\tb\t\tx\t\tf(a)\t\tf(b)\t\tf(x)\t\tEa(%)\t\tEt(%)" << endl;
+   cout << "\ni\tXi\t\tf(Xi)\t\tf'(Xi)\t\tXi+1\t\tEa(%)\t\tEt(%)" << endl;
    for (int i = 0; i < it; ++i) {
       ea = x;
-      x = (a + b) / 2;
-      ea = ((x - ea) / x);
+      a = x - (f(x) / g(x));
+      ea = ((a - ea) / a);
       cout  << i + 1 << "\t"
-            << a << "\t"
-            << b << "\t"
             << x << "\t"
-            << f(a) << "\t"
-            << f(b) << "\t"
             << f(x) << "\t"
+            << g(x) << "\t"
+            << a << "\t"
             << (i ? ea * 100 : 0) << "\t"
             << ((t - x) / t) * 100
             << endl;
-
-      if (f(x) > 0 && f(a) > 0) a = x;
-      else if (f(x) < 0 && f(a) < 0) a = x;
-      else b = x;
+      x = a;
    }
-   
 
    return 0;
 }

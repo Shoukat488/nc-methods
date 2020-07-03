@@ -42,7 +42,7 @@ int main() {
    cout << "\ni\ta\t\tb\t\tx\t\tf(a)\t\tf(b)\t\tf(x)\t\tEa(%)\t\tEt(%)" << endl;
    for (int i = 0; i < it; ++i) {
       ea = x;
-      x = (a + b) / 2;
+      x = (a * f(b) - b * f(a)) / (f(b) - f(a));
       ea = ((x - ea) / x);
       cout  << i + 1 << "\t"
             << a << "\t"
