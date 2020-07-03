@@ -17,19 +17,19 @@ def PrintArray(A):
     n = len(A);
     for i in range(0 , n):
         for j in range(0 , n):
-            print(A[i][j] ,end="\t")
+            print( "{:10}".format(A[i][j]) ,end="\t")
         print("")
     print("")
 
 def CheckCondition(A):
     flag = True
     for i in range(len(A)):
-        print("|",A[i][i],"| > ", end=" ")
+        print("|{:2} | > ".format(A[i][i]), end=" ")
         sum = 0
         daignol = abs(A[i][i])
         for j in range(len(A)):
             if j != i:
-                print(" + |",A[i][j],"|", end=" ")
+                print(" + | {:2}  |".format(A[i][j]), end=" ")
                 sum += abs(A[i][j])
         if sum > daignol:
             print(" condition false",)

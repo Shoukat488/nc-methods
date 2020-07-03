@@ -1,8 +1,6 @@
 from pprint import pprint
 from numpy import array, zeros, diag, diagflat, dot, array_equal, round
 import services as Services
-import os;
-os.system('cls')
 def jacobi(A,b,N=25,x=None):
     #Solves the equation Ax=b via the Jacobi iterative method.
     # Create an initial guess if needed                                                                                                                                                            
@@ -18,8 +16,10 @@ def jacobi(A,b,N=25,x=None):
     for i in range(N):
         x = (b - dot(R,x)) / D
         print("Iteratin: ",i+1)
-        print("x :")
-        print(round(x,6))
+        for k  in range (0,len(x)):
+            print("x(",k+1,") = ",round(x[k],6), end=", ")
+        print("\n")
+        
     return x
 
 A = [[2,-6,8],[5,4,-3],[3,1,2]]
@@ -40,10 +40,10 @@ print("Checking Condition =>")
 print("")
 conditon =  Services.CheckCondition(arranged)
 if conditon == True:
-    print("Condition is statisfied, Therefore solution will be converged")
+    print("It's not a diagnolly dominent, Therefore solution will be converged")
     print("")
 else:
-    print("Condition is not statisfied, Therefore solution will be diverged")
+    print("It's a diagnolly dominent, Therefore solution will be diverged")
     print("")
 # N is no of iterations
 sol = jacobi(arranged,b,N=2)
