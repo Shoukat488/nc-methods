@@ -24,7 +24,7 @@ def jacobi(A, b, N=25, x=None):
 
     return x
 
-
+# enter your arguments:
 A = [[1, 2, 1], [3, 1, 1], [1, -1, 4]]
 b = array([0, 0, 3])
 
