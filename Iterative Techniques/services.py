@@ -38,3 +38,17 @@ def CheckCondition(A):
             print(" condition true",)
     print("")
     return flag
+
+def isEqual(A,B):
+    n1 = len(A)
+    n2 = len(B)
+    n = n1
+    if n1 != n2:
+        return False
+    
+    for i in range(0,n):
+        for j in range(0, n):
+            if A[i][j] != B[i][j]:
+                return False
+    return True
+
