@@ -2,7 +2,7 @@ import math
 
 #enter your function here
 def dydx(x, y):
-    return ((x - y)/2)
+    return (x * math.exp(3*x) - 2 * y)
 
 def rungeKutta(x0, y0, x, h):
     n = (int)((x - x0)/h)
@@ -19,7 +19,7 @@ def rungeKutta(x0, y0, x, h):
 
 #Enter arguments
 x0 = 0
-y = 1
-x = 2
-h = 0.2
+y = 0
+x = 1
+h = 0.5
 print('The value of y at x is:', round(rungeKutta(x0, y, x, h),6))
