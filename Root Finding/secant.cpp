@@ -45,7 +45,7 @@ int main() {
       cout << "Invalid inputs" << endl;
       return 0;
    }
-   cout << "\ni\tXi-1\t\tXi\t\tf(Xi)\t\tXi+1\t\tEa(%)\t\tEt(%)" << endl;
+   cout << "\ni\tXi-1\t\tXi\t\tf(Xi-1)\t\tf(Xi)\t\tXi+1\t\tEa(%)\t\tEt(%)" << endl;
    
    for (int i = 0; i < it; ++i) {
       ea = a;
@@ -54,6 +54,7 @@ int main() {
       cout  << i + 2 << "\t"
             << x0 << "\t"
             << x1 << "\t"
+            << f(x0) << "\t"
             << f(x1) << "\t"
             << a << "\t"
             << abs(i ? ea * 100 : 0) << "\t"
