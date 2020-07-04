@@ -15,7 +15,7 @@ Newton divided, forward, backward, and centered difference
 #include <math.h>
 #include <iostream>
 #include <iomanip>
-#include "true.h"
+#include "../true.h"
 
 using namespace std;
 

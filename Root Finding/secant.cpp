@@ -15,13 +15,13 @@ Newton divided, forward, backward, and centered difference
 #include <math.h>
 #include <iostream>
 #include <iomanip>
-#include "true.h"
+#include "../true.h"
 
 using namespace std;
 
 double f(double x) {
    return 
-   /* f(x): */ pow(x, 7) - 1000
+   /* f(x): */ sin(pow(x, 2))
    ;
 }
 
@@ -32,10 +32,10 @@ int main() {
    /* iterations: */ 20
    ;
    double a, ea, x0 = 
-   /* x0: */ 2
+   /* x0: */ -1
    ;
    double x1 = 
-   /* x1: */ 3
+   /* x1: */ -2
    ;
    double t = findRoot(f, x0, x1);
 

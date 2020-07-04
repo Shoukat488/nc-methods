@@ -1,3 +1,4 @@
+#pragma once
 #include <math.h>
 #include <functional>
 #define _USE_MATH_DEFINES

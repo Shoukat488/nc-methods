@@ -47,49 +47,39 @@ int main() {
    cout << fixed << showpoint << setprecision(6);
    cout << "true value: " << f(x) << endl;
 
-   double result = 0;
+   double result = 0, denom = 0;
 
    for (int i = 0 ; i < n; i++) {
-      double term = c[i].y;
       for (int j = 0; j < n; j++)
-         if (j != i) {
-            cout << "(x" << "-";
-            printf("%.6g)", c[j].x);
-         }
+         if (j != i)
+            printf("(x-%.6g)", c[j].x);
       cout << c[i].y << "\t";
-   } cout << "\n";
+   } cout << endl;
+
    for (int i = 0 ; i < n; i++) {
-      double term = c[i].y;
       for (int j = 0; j < n; j++)
-         if (j != i) {
-            cout << "(1" << "-";
-            printf("%.6g)", c[j].x);
-         }
+         if (j != i)
+            printf("(%.6g-%.6g)", c[i].x, c[j].x);
       cout << "\t\t";
    } cout << endl << endl;
 
-   for (int i = 0 ; i < n; i++)
-      if (c[i].y) {
-         for (int j = 0; j < n; j++)
-            if (j != i)
-               printf("(%.6g-%.6g)", x, c[j].x);
-         cout << c[i].y << "\t";
-   } cout << "\n";
+
    for (int i = 0 ; i < n; i++) {
       double term = c[i].y;
-      if (term) {
+      denom = 1;
+      if (c[i].y) {
          for (int j = 0; j < n; j++)
             if (j != i) {
                term *= (x - c[j].x) / double (c[i].x - c[j].x);
-               cout << "(1" << "-";
-               printf("%.6g)", c[j].x);
+               denom *= (c[i].x - c[j].x);
+               printf("(x-%.6g)", c[j].x);
             }
-         cout << "\t\t";
-      }
+         cout << c[i].y / denom << "\t";
+      } 
       result += term;
    } cout << endl << endl;
 
-   cout << result;
+   cout << "lagrange approximation of order " << n << ": " << result;
 
    return 0;
 }
