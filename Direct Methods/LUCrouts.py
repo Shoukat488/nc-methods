@@ -47,7 +47,7 @@ def Crouts(mat, b, n, option):
     print("Upper Triangular matrix:")
     Services.PrintArray(upper)
     if option.lower() == 'y':
-        Services.solveDecompositon(lower, upper, b)
+        Services.solveDecompositon(lower, upper, b,'a')
 
 
 option = input("Do you want to find solution also? y or n : ")
