@@ -27,7 +27,7 @@ struct Coords {
 
 double f(double x) {
    return 
-   /* f(x): */ log(x);
+   /* f(x): */ log(x + 1)
    ;
 }
 
@@ -39,10 +39,12 @@ int main() {
 
    Coords c = {
       // x values (or {x, y} pairs): 
-      1, 4, 6
+      0, 0.6, 0.9
    };
 
-   double x = 2;
+   double x = 
+   /* x to approximate: */ 2
+   ;
 
    cout << fixed << showpoint << setprecision(6);
    cout << "true value: " << f(x) << endl;
@@ -79,7 +81,7 @@ int main() {
       result += term;
    } cout << endl << endl;
 
-   cout << "lagrange approximation of order " << n << ": " << result;
+   printf("lagrange approximation of order %.d for f(%.6g): %.6g", n, x, result);
 
    return 0;
 }
