@@ -121,7 +121,7 @@ double f(double x) {
 int main() {
 
    int n =
-   /* terms: */ 5
+   /* terms: */ 4
    ;
 
    const Coords c = {
@@ -133,7 +133,7 @@ int main() {
    /* x to approximate: */ 40
    ;
 
-   cout << fixed << showpoint << setprecision(6);
+   // cout << fixed << showpoint << setprecision(4);
    // cout << "true value: " << f(x) << endl;
 
    cout << "formula: " << endl;
@@ -142,7 +142,22 @@ int main() {
 
    solve(c, 0, n - 1);
 
-   cout << endl << "formula with values: " << endl;
+   cout << endl << "divided difference table: " << endl << "x\t";
+
+   for (int i = 0; i < n; i++) 
+      cout << "y" << i << "\t";
+   cout << endl;
+   for (int i = 0; i < n; i++) {
+        cout << c[i].x << "\t";
+        for (int j = 0; j < n - i; j++)
+            cout << (!j ? c[i].y : solveNoPrint(c, i, i + j)) << "\t";
+        cout << endl;
+   }
+   cout << endl;
+
+   cout << "formula with values: " << endl;
+
+
    r2(c, 0, n - 1);
    cout << "\n= ";
    r3(c, 0, n - 1);
