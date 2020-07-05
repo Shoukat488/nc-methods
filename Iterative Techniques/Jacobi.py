@@ -1,5 +1,7 @@
 from pprint import pprint
 from numpy import array, zeros, diag, diagflat, dot, array_equal, round, copy
+import sys
+sys.path.append('../')
 import services as Services
 
 def jacobi(A, b, N=25, x=None):
