@@ -126,20 +126,11 @@ int main() {
 
    const Coords c = {
       // x values (or {x, y} pairs):
-<<<<<<< HEAD
-      {1.0, 0.7651977}, {1.3, 0.6200860}, {1.6, 0.4554022},
-      {1.9, 0.2818186}, {2.2, 0.1103623}
-   };
-
-   double x =
-   /* x to approximate: */ 1.1
-=======
       {30,148},{35,96},{45,68},{55,34}
    };
 
    double x =
    /* x to approximate: */ 40
->>>>>>> ff34e6a6c7ba6e7141413fea5e5e1060b83b48cd
    ;
 
    cout << fixed << showpoint << setprecision(6);
