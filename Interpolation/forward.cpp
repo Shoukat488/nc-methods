@@ -5,12 +5,14 @@
 #include <io.h>
 #include <fcntl.h>
 #include "../true.h"
+#include <sstream>
 
 using namespace std;
 
 
 double f(double x);
 double h;
+ostringstream s;
 
 struct Coord { double x, y = 0; };
 struct Coords {
@@ -46,8 +48,8 @@ void r1(const Coords c, double **table, int start, int end) {
    else {
       r1(c, table, start, end - 1);
       printf("p");
-      for (int i = start; i < end; i++) {
-         printf("(p-x%d)", i);
+      for (int i = start + 1; i < end; i++) {
+         printf("(p-%d)", i);
       } 
       printf("(y%d/%d!) + ", end, end);
    }
@@ -59,10 +61,11 @@ void r2(const Coords c, double **table, int start, int end) {
       r2(c, table, start, end - 1);
       if (table[0][end]) {
          for (int i = start; i < end; i++) {
-            printf("(x-%.6g)", c[i].x);
+            if (!i) cout << "(" << s.str() << ")";
+            else cout << "(" << s.str() << "-" << i << ")";
          } 
          
-         printf("(%.6g/%.6g) + ", table[0][end], h * fact(end - 1));
+         printf("(%.6g/%d) + ", table[0][end], fact(end));
       }
    }
 }
@@ -73,10 +76,11 @@ void r3(const Coords c, double **table, int start, int end) {
       r3(c, table, start, end - 1);
       if (table[0][end]) {
          for (int i = start; i < end; i++) {
-            printf("(x-%.6g)", c[i].x);
+            if (!i) cout << "(" << s.str() << ")";
+            else cout << "(" << s.str() << "-" << i << ")";
          } 
          
-         printf("%.6g + ", table[0][end] / (h * fact(end - 1)));
+         printf("%.6g + ", table[0][end] / fact(end));
       }
    }
 }
@@ -95,11 +99,11 @@ int main() {
 
    const Coords c = {
       // x values (or {x, y} pairs):
-      {1, 3}, {3, 14}, {5, 19}, {7, 21}, {9,23}, {11,28}
+      {0, 0}, {2, 4}, {4, 56}, {6, 204}, {8, 496}, {10, 980}
    };
 
    double x =
-   /* x to approximate: */ 7
+   /* x to approximate: */ 3
    ;
 
    // cout << fixed << showpoint << setprecision(6);
@@ -107,6 +111,10 @@ int main() {
 
 
    h = c[1].x - c[0].x;
+   if (!c[0].x && h != 1) s << "x/" << h;
+   else if (c[0].x && h == 1) s << "(x-" << c[0].x << ")";
+   else if (c[0].x && h != 1) s << "((x/" << h << ")" << "-" << c[0].x << ")";
+   else s << "x";
    cout << "p = (x-x0) / h" << endl;
    printf("p = (x-%.6g) / %.6g\n\n", c[0].x, (c[1].x - c[0].x));
 
