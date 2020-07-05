@@ -13,7 +13,7 @@ struct Coord { double x, y = 0; };
 struct Coords {
    Coord *c;
    Coord operator [] (int i) { return c[i]; }
-   const Coord operator [] (int &i) const { return c[i]; }
+   const Coord operator [] (int i) const { return c[i]; }
 
    Coords(const initializer_list<double> &init)
    : c(init.size() ? new Coord[init.size()] : nullptr)
