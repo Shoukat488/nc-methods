@@ -27,23 +27,23 @@ struct Coords {
 
 double f(double x) {
    return 
-   /* f(x): */ log(x + 1)
+   /* f(x): */ cos(x)
    ;
 }
 
 int main() {
 
    int n = 
-   /* order: */ 3
+   /* order: */ 2
    ;
 
    Coords c = {
       // x values (or {x, y} pairs): 
-      0, 0.6, 0.9
+      0, 0.6 , 0.9
    };
 
    double x = 
-   /* x to approximate: */ 2
+   /* x to approximate: */ 0.45
    ;
 
    cout << fixed << showpoint << setprecision(6);
