@@ -121,16 +121,17 @@ double f(double x) {
 int main() {
 
    int n =
-   /* terms: */ 4
+   /* terms: */ 5
    ;
 
    const Coords c = {
       // x values (or {x, y} pairs):
-      {5,12}, {6, 13}, {9, 14}, {11,16}
+      {1.0, 0.7651977}, {1.3, 0.6200860}, {1.6, 0.4554022},
+      {1.9, 0.2818186}, {2.2, 0.1103623}
    };
 
    double x =
-   /* x to approximate: */ 7
+   /* x to approximate: */ 1.1
    ;
 
    cout << fixed << showpoint << setprecision(6);

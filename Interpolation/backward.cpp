@@ -2,8 +2,6 @@
 #include <math.h>
 #include <iostream>
 #include <iomanip>
-#include <io.h>
-#include <fcntl.h>
 #include "../true.h"
 #include <sstream>
 
@@ -95,12 +93,14 @@ double f(double x) {
 int main() {
 
    n =
-   /* terms: */ 4
+   /* terms: */ 5
    ;
 
    const Coords c = {
       // x values (or {x, y} pairs):
-      {45, 0.7071}, {50, 0.7660}, {55, 0.8192}, {60, 0.8660}
+      // x values (or {x, y} pairs):
+      {1.0, 0.7651977}, {1.3, 0.6200860}, {1.6, 0.4554022},
+      {1.9, 0.2818186}, {2.2, 0.1103623}
    };
 
    double x =
