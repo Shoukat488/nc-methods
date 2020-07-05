@@ -2,7 +2,6 @@
 #include <math.h>
 #include <iostream>
 #include <iomanip>
-#include <fcntl.h>
 #include "../true.h"
 #include <sstream>
 
@@ -93,16 +92,16 @@ double f(double x) {
 int main() {
 
    const int n =
-   /* terms: */ 6
+   /* terms: */ 4
    ;
 
    const Coords c = {
       // x values (or {x, y} pairs):
-      {0, 0}, {2, 4}, {4, 56}, {6, 204}, {8, 496}, {10, 980}
+      {20, 512}, {30, 439}, {40, 346}, {50, 243}
    };
 
    double x =
-   /* x to approximate: */ 3
+   /* x to approximate: */ 35
    ;
 
    h = c[1].x - c[0].x;
