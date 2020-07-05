@@ -12,6 +12,7 @@ using namespace std;
 
 double f(double x);
 double h;
+int n;
 ostringstream s;
 
 struct Coord { double x, y = 0; };
@@ -33,7 +34,7 @@ struct Coords {
 double u_cal(double u, int n) { 
     double temp = u; 
     for (int i = 1; i < n; i++) 
-        temp *= (u - i); 
+        temp *= (u + i); 
     return temp; 
 } 
 
@@ -56,31 +57,31 @@ void r1(const Coords c, double **table, int start, int end) {
 }
 
 void r2(const Coords c, double **table, int start, int end) {
-   if (start == end) cout << c[start].y << " + ";
+   if (start == end) cout << c[n - 1].y << " + ";
    else {
       r2(c, table, start, end - 1);
-      if (table[0][end]) {
+      if (table[n - 1][end]) {
          for (int i = start; i < end; i++) {
             if (!i) cout << "(" << s.str() << ")";
             else cout << "(" << s.str() << "-" << i << ")";
          } 
          
-         printf("(%.6g/%d) + ", table[0][end], fact(end));
+         printf("(%.6g/%d) + ", table[n - 1][end], fact(end));
       }
    }
 }
 
 void r3(const Coords c, double **table, int start, int end) {
-   if (start == end) cout << c[start].y << " + ";
+   if (start == end) cout << c[n - 1].y << " + ";
    else {
       r3(c, table, start, end - 1);
-      if (table[0][end]) {
+      if (table[n - 1][end]) {
          for (int i = start; i < end; i++) {
             if (!i) cout << "(" << s.str() << ")";
             else cout << "(" << s.str() << "-" << i << ")";
          } 
          
-         printf("%.6g + ", table[0][end] / fact(end));
+         printf("%.6g + ", table[n - 1][end] / fact(end));
       }
    }
 }
@@ -93,26 +94,26 @@ double f(double x) {
 
 int main() {
 
-   const int n =
-   /* terms: */ 6
+   n =
+   /* terms: */ 4
    ;
 
    const Coords c = {
       // x values (or {x, y} pairs):
-      {0, 0}, {2, 4}, {4, 56}, {6, 204}, {8, 496}, {10, 980}
+      {45, 0.7071}, {50, 0.7660}, {55, 0.8192}, {60, 0.8660}
    };
 
    double x =
-   /* x to approximate: */ 3
+   /* x to approximate: */ 57
    ;
 
    h = c[1].x - c[0].x;
-   if (!c[0].x && h != 1) s << "x/" << h;
-   else if (c[0].x && h == 1) s << "(x-" << c[0].x << ")";
-   else if (c[0].x && h != 1) s << "((x-" << c[0].x << ")" << "/" << h << ")";
+   if (!c[n - 1].x && h != 1) s << "x/" << h;
+   else if (c[n - 1].x && h == 1) s << "(x-" << c[n - 1].x << ")";
+   else if (c[n - 1].x && h != 1) s << "((x-" << c[n - 1].x << ")" << "/" << h << ")";
    else s << "x";
-   cout << "p = (x-x0) / h" << endl;
-   printf("p = (x-%.6g) / %.6g\n\n", c[0].x, (c[1].x - c[0].x));
+   cout << "p = (x-x" << n - 1 << ") / h" << endl;
+   printf("p = (x-%.6g) / %.6g\n\n", c[n - 1].x, (c[1].x - c[0].x));
 
    double **table = new double *[n];
 
@@ -122,17 +123,17 @@ int main() {
    }
 
    for (int i = 1; i < n; i++)
-      for (int j = 0; j < n - i; j++)
-            table[j][i] = table[j + 1][i - 1] - table[j][i - 1];
+      for (int j = n - 1; j >= i; j--)
+            table[j][i] = table[j][i - 1] - table[j - 1][i - 1];
 
-   cout <<"forward difference table: " << endl;
+   cout <<"backward difference table: " << endl;
    cout << "x" << "\t";
    for (int i = 0; i < n; i++)
       cout << "y" << i << "\t";
    cout << endl;
    for (int i = 0; i < n; i++) {
         cout << c[i].x << "\t";
-        for (int j = 0; j < n - i; j++)
+        for (int j = 0; j <= i; j++)
             cout << table[i][j] << "\t";
         cout << endl;
     }
@@ -145,11 +146,11 @@ int main() {
    cout << endl << "f(x) = ";
    r3(c, table, 0, n - 1);
 
-   double sum = table[0][0]; 
-   double u = (x - c[0].x) / (c[1].x - c[0].x); 
+   double sum = table[n - 1][0]; 
+   double u = (x - c[n - 1].x) / (c[1].x - c[0].x); 
 
    for (int i = 1; i < n; i++)
-      sum = sum + (u_cal(u, i) * table[0][i]) / fact(i); 
+      sum = sum + (u_cal(u, i) * table[n - 1][i]) / fact(i); 
 
    printf("\nvalue at f(%.6g) = %.6g", x, sum);
    return 0;
