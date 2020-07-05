@@ -133,7 +133,7 @@ int main() {
         for (int j = 0; j < n - i; j++)
             cout << table[i][j] << "\t";
         cout << endl;
-    }
+   }
    cout << endl;
 
    cout << "formula: ";
