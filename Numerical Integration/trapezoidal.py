@@ -5,7 +5,7 @@ import numpy as np
 
 
 def f(x):
-    return (1 + np.exp(-x)* np.sin(4*x))
+    return (x / (x**2 +4 ))
 # Function for approximate integral
 
 
@@ -39,7 +39,7 @@ def trapezoidal(a, b, n=1):
 
 
 # Driver code
-a = 0  # Lower limit
-b = 0.5  # Upper limit
-n = 1  # Number of interval
-print("f(x) = ", trapezoidal(a, b))
+a = 1  # Lower limit
+b = 3  # Upper limit
+n = 8  # Number of interval
+print("f(x) = ", trapezoidal(a, b,n))

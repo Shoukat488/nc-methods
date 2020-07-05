@@ -5,7 +5,7 @@ import sympy as sy
 import scipy.integrate as integrate
 # Function to calculate f(x) 
 def f( x ): 
-	return  (1 + np.exp(-x)* np.sin(4*x))
+	return  (x / (x**2 +4 ))
 # Function for approximate integral
 
 # def simpson1to3Error(a, b):
@@ -60,9 +60,9 @@ def simpson( a, b, n = 2):
 
     return (h/3)*(f(a)+f(b)+k)
 # Driver code 
-a = 0 # Lower limit 
-b = 1 # Upper limit 
-n = 2 # Number of interval 
-print("f(x) = ",simpson(a, b)) 
+a = 1 # Lower limit 
+b = 3 # Upper limit 
+n = 8 # umber of interval 
+print("f(x) = ",simpson(a, b,n)) 
 
 # simpson1to3Error(a, b)
