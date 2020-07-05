@@ -2,7 +2,6 @@
 #include <math.h>
 #include <iostream>
 #include <iomanip>
-#include <io.h>
 #include <fcntl.h>
 #include "../true.h"
 #include <sstream>
